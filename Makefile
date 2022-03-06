@@ -9,7 +9,8 @@ SRC = parcer/cub.c \
       parcer/ft_libft_functions.c \
       get_next_line/get_next_line.c \
       get_next_line/get_next_line_utils.c \
-      source/raycasting.c
+      source/raycasting.c \
+      source/raycasting_steps.c
 
 OBJ = $(SRC:.c=.o)
 
