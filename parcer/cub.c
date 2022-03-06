@@ -2,7 +2,7 @@
 // Created by Iraida Kathrine on 3/2/22.
 //
 
-#include "cub.h"
+#include "../includes/cub_3D.h"
 
 int main(int argc, char **argv) {
     t_cub cub;

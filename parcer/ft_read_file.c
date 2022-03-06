@@ -2,7 +2,7 @@
 // Created by Iraida Kathrine on 3/2/22.
 //
 
-#include "cub.h"
+#include "../includes/cub_3D.h"
 
 int    ft_str_len(t_cub *cub)
 {
@@ -57,6 +57,7 @@ void read_map_file(char **argv, t_cub *cub)
     int k;
     char *line;
     int fd;
+    int count;
 
     i = 0;
     k = 1;
@@ -68,12 +69,52 @@ void read_map_file(char **argv, t_cub *cub)
     while(k)
     {
         k = get_next_line(fd, &line);
+        if (k == -1)
+            exit_cube(6);
         cub->map[i] = ft_strdup(line);
-        printf("%s\n", cub->map[i]);
+        if (!(cub->map[i][0] == ' ' || cub->map[i][0] == '1'))
+           count = count + ft_check_before_map(cub->map[i]);
+        else if (cub->map[i][0] == ' ' || cub->map[i][0] == '1')
+        {
+            if (count < 6)
+                exit_cube(9);
+        }
+        //printf("%s\n", cub->map[i]);
         i++;
         free(line);
     }
-    if (k == -1)
-        exit_cube(6);
+//    if (k == -1)
+//        exit_cube(6);
     cub->map[i] = NULL;
+    //printf("%s\n", " ");
+    read_map_card(cub);
+}
+
+void read_map_card(t_cub *cub) {
+    int i;
+    int j;
+    t_cub map;
+
+    i = 0;
+    j = 0;
+    map.map = (char **)malloc(sizeof(char *) * (cub->str_num + 2));
+    while (i < cub->str_num)
+    {
+       if (((cub->map[i][0] == ' ' && (cub->map[i][1] == ' ' || cub->map[i][1] == '1')) || cub->map[i][0] == '1')
+            || (cub->map[i][0] == '\0' && ((cub->map[i + 1][0] == ' ' || cub->map[i + 1][0] == '1') && (cub->map[i - 1][0] == ' ' || cub->map[i - 1][0] == '1'))))
+        {
+            map.map[j] = cub->map[i];
+            printf("%s\n", map.map[j]);
+            j++;
+        }
+        i++;
+    }
+    map.map[j] = NULL;
+    i = 0;
+    while (map.map[i] != NULL)
+    {
+        if (map.map[i][0] == '\0')
+            exit_cube(1);
+        i++;
+    }
 }

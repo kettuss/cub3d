@@ -2,21 +2,9 @@
 // Created by Iraida Kathrine on 3/2/22.
 //
 
-#include "cub.h"
+#include "../includes/cub_3D.h"
 
-int    ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-    size_t    i;
-
-    i = 0;
-    while (s1[i] && s2[i] && (unsigned char)s1[i] == (unsigned char)s2[i] && i < n)
-        i++;
-    if (i == n)
-        return (0);
-    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
-
-void ft_check_wall(t_cub *cub)
+void ft_check_wall(t_cub *cub) //TODO: !!!
 {
     int i_first;
     int j_first;
@@ -39,11 +27,10 @@ void ft_check_wall(t_cub *cub)
     }
 }
 
-void ft_check_enter_thing_stop(t_cub *cub)
+void ft_check_player_position(t_cub *cub)
 {
     int i;
     int j;
-
 
     i = 0;
     cub->map_N = 0;
@@ -67,9 +54,9 @@ void ft_check_enter_thing_stop(t_cub *cub)
         }
         i++;
     }
-    printf("%d\n", cub->map_N + cub->map_S + cub->map_E + cub->map_W);
-    if ((cub->map_N + cub->map_S + cub->map_E + cub->map_W) != 1)
-        exit_cube(1);
+    //TODO!!!
+//    if ((cub->map_N + cub->map_S + cub->map_E + cub->map_W) != 1)
+//        exit_cube(1);
 }
 
 void ft_check_path_images(t_cub *cub)
@@ -77,7 +64,6 @@ void ft_check_path_images(t_cub *cub)
     int i;
     int j;
     int k;
-    //int check_read_path;
 
     i = 0;
     cub->map_no = NULL;
@@ -92,77 +78,16 @@ void ft_check_path_images(t_cub *cub)
         k = 0;
         while (cub->map[i][j])
         {
-            if (cub->map[i][0] == 'N' && cub->map[i][1] == 'O')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_no = ft_substr(cub->map[i], 3, k);
-                //check_read_path = ft_check_read_path(cub->map_no);
-            }
-            else if (cub->map[i][0] == 'S' && cub->map[i][1] == 'O')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_so = ft_substr(cub->map[i], 3, k);
-            }
-            else if (cub->map[i][0] == 'W' && cub->map[i][1] == 'E')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_we = ft_substr(cub->map[i], 3, k);
-            }
-            else if (cub->map[i][0] == 'E' && cub->map[i][1] == 'A')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_ea = ft_substr(cub->map[i], 3, k);
-            }
-            else if (cub->map[i][0] == 'F')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_f = ft_substr(cub->map[i], 2, k);
-            }
-            else if (cub->map[i][0] == 'C')
-            {
-                j = j + 2;
-                while (cub->map[i][j] != '\n')
-                {
-                    k++;
-                    j++;
-                }
-                cub->map_c = ft_substr(cub->map[i], 2, k);
-            }
+            if ((cub->map[i][0] == 'N' && cub->map[i][1] == 'O') || (cub->map[i][0] == 'S' && cub->map[i][1] == 'O'))
+                ft_utils_for_NO_and_SO(cub, i, j);
+            else if ((cub->map[i][0] == 'W' && cub->map[i][1] == 'E') || (cub->map[i][0] == 'E' && cub->map[i][1] == 'A'))
+                ft_utils_for_WE_and_EA(cub, i, j);
+            else if (cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
+                ft_utils_for_colors(cub, i, j, k);
             break;
         }
         i++;
     }
-    printf("%s\n", cub->map_no);
-    printf("%s\n", cub->map_so);
-    printf("%s\n", cub->map_we);
-    printf("%s\n", cub->map_ea);
-    printf("%s\n", cub->map_f);
-    printf("%s\n", cub->map_c);
 }
 
 int ft_check_file_extention(char **argv)
@@ -179,12 +104,24 @@ int ft_check_file_extention(char **argv)
     return (1);
 }
 
+int ft_check_before_map(char *cub)
+{
+    int i;
+    int count_strings_before;
+
+    i = 0;
+    count_strings_before = 0;
+       if (((cub[i] == 'N' || cub[i] == 'S') && cub[i + 1] == 'O')
+            || (cub[i] == 'W' && cub[i + 1] == 'E') || (cub[i] == 'E' && cub[i + 1] == 'A')
+            || (cub[i] == 'F' && cub[i + 1] == ' ') || (cub[i] == 'C' && cub[i + 1] == ' '))
+           count_strings_before++;
+    return (count_strings_before);
+}
 
 void checker_map(t_cub *cub, char **argv)
 {
-    //ft_check_wall(cub);
-
-    ft_check_enter_thing_stop(cub);
-    ft_check_path_images(cub);
     ft_check_file_extention(argv); //check ".cub"
+    ft_check_path_images(cub); //check NO, SO, WE, EA, F, C
+    ft_check_player_position(cub); //check N, S, W, E
+    //ft_check_wall(cub);
 }

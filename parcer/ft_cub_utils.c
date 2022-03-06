@@ -2,7 +2,7 @@
 // Created by Iraida Kathrine on 3/3/22.
 //
 
-#include "cub.h"
+#include "../includes/cub_3D.h"
 
 size_t	ft_strlen_main(const char *str)
 {
@@ -65,12 +65,49 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
     }
 }
 
-//int ft_check_read_path(char *cub)
-//{
-//    FILE *files;
-//
-//    files = fopen(cub, "r");
-//    if (files)
-//        return 1;
-//    return 0;
-//}
+int ft_check_read_path(char *cub)
+{
+    int files;
+
+    files = open(cub, O_RDONLY);
+    if (files > 0) {
+        printf("%s", "File is open, good, cool etc.!!");
+        return 1;
+    }
+    else {
+        exit_cube(7);
+        return (0);
+    }
+}
+
+long ft_color_parse_to_int(char *cub)
+{
+    char **array;
+    long color;
+    int i;
+    int *newArray;
+
+    i = 0;
+    array = ft_split(cub,',');
+    newArray = (int *)malloc(sizeof(int *) + 1);
+    if (!newArray)
+        return (0);
+    while (array[i] != (void *)0) {
+        newArray[i] = ft_atoi(array[i]);
+        i++;
+    }
+    if (i != 3)
+        exit_cube(10);
+    i = 0;
+    while (i < 3)
+    {
+        if (newArray[i] < 0 || newArray[i] > 255)
+        {
+            exit_cube(11);
+            break;
+        }
+        i++;
+    }
+    color = (1 << 24 | newArray[0] << 16 | newArray[1] << 8 | newArray[2]);
+    return (color);
+}
