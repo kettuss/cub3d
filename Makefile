@@ -10,7 +10,7 @@ SRC = parcer/cub.c \
       get_next_line/get_next_line.c \
       get_next_line/get_next_line_utils.c \
       source/raycasting.c \
-      source/raycasting_steps.c
+      source/raycating_steps.c
 
 OBJ = $(SRC:.c=.o)
 
