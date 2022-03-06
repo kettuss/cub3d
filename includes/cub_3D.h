@@ -13,8 +13,8 @@
 #ifndef CUB_3D_H
 # define CUB_3D_H
 
-# include "get_next_line/get_next_line.h"
-# include "minilibx_mms_20200219/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include "../mlx/mlx.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -115,10 +115,10 @@ typedef struct s_cub
     int prey;
     int str_col;
     int step;
-    int map_N;
-    int map_S;
-    int map_E;
-    int map_W;
+    int map_N; //flag for player`s position
+    int map_S; //flag for player`s position
+    int map_E; //flag for player`s position
+    int map_W; //flag for player`s position
     t_xy_system drop;
     t_picture figure;
     t_vars window;
@@ -133,7 +133,7 @@ char    *ft_str_char(const char *s, char c);
 void    ft_str_number(t_cub *cub, char **argv);
 int    ft_strncmp(const char *s1, const char *s2, size_t n);
 void ft_check_wall(t_cub *cub);
-void ft_check_enter_thing_stop(t_cub *cub);
+void ft_check_player_position(t_cub *cub);
 int ft_check_file_extention(char **argv);
 void checker_map(t_cub *cub, char **argv);
 void ft_check_path_images(t_cub *cub);
@@ -141,6 +141,21 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup_main(const char *str);
 size_t	ft_strlen_main(const char *str);
 int ft_check_read_path(char *cub);
+void ft_utils_for_NO_and_SO(t_cub *cub, int i, int j);
+void ft_utils_for_WE_and_EA(t_cub *cub, int i, int j);
+int ft_check_before_map(char *cub); //check strings before main map
+void read_map_card(t_cub *cub); //read map (prt with 0 and 1)
+int	ft_atoi(const char *s);
+char	*ft_check_space_tab(char *line);
+//split
+int	ft_count(char const *s, char c);
+int	ft_lgthword(char const *s, char c, int k);
+char	**ft_clean(char **str, int n);
+char	**ft_fillnewstr(char const *s, int n, char c, char **str);
+char	**ft_split(char const *s, char c);
+//color
+long ft_color_parse_to_int(char *cub);
+void ft_utils_for_colors(t_cub *cub, int i, int j, int k);
 
 void	ft_init_player(t_cub *cub);
 
