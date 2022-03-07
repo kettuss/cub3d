@@ -21,7 +21,7 @@
 # include <math.h>
 # include <stdio.h>
 
-# define CHECK "01NSEW"
+# define CHECK "NSEW"
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
@@ -126,7 +126,9 @@ typedef struct s_cub
 	t_lodev lodev;
 }               t_cub;
 
-void    exit_cube(int i);
+void    exit_cube_card(int i);
+void    exit_cube_file(int i);
+void exit_cube_card_util(int i);
 void read_map_file(char **argv, t_cub *cub);
 int    ft_str_len(t_cub *cub);
 char    *ft_str_char(const char *s, char c);
@@ -140,20 +142,30 @@ void ft_check_path_images(t_cub *cub);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strdup_main(const char *str);
 size_t	ft_strlen_main(const char *str);
+
 int ft_check_read_path(char *cub);
-void ft_utils_for_NO_and_SO(t_cub *cub, int i, int j);
-void ft_utils_for_WE_and_EA(t_cub *cub, int i, int j);
-int ft_check_before_map(char *cub); //check strings before main map
-void read_map_card(t_cub *cub); //read map (prt with 0 and 1)
+void ft_utils_for_no_and_so(t_cub *cub, int i, int j);
+void ft_utils_for_we_and_ea(t_cub *cub, int i, int j);
+int ft_check_before_map(char *cub);
+void read_map_card(t_cub *cub);
 int	ft_atoi(const char *s);
 char	*ft_check_space_tab(char *line);
-//split
+t_cub *read_map_file_util(int k, int fd, t_cub *cub);
+t_cub read_map_card_util(t_cub *cub, t_cub	map);
+t_cub check_player_position_util(t_cub *cub, t_cub	map);
+int check_max_size_string(int max_size, t_cub *cub);
+t_cub check_spaces_in_the_map(t_cub *cub, t_cub map, int max_size);
+int check_strings_count_in_the_map(t_cub map);
+void check_wall_utils(t_cub map);
+int check_insaid_part_map(t_cub map, int i, int j);
+void check_colors_range(int *new_array);
+
 int	ft_count(char const *s, char c);
 int	ft_lgthword(char const *s, char c, int k);
 char	**ft_clean(char **str, int n);
 char	**ft_fillnewstr(char const *s, int n, char c, char **str);
 char	**ft_split(char const *s, char c);
-//color
+
 long ft_color_parse_to_int(char *cub);
 void ft_utils_for_colors(t_cub *cub, int i, int j, int k);
 
