@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 20:07:42 by kpeanuts          #+#    #+#             */
-/*   Updated: 2022/03/03 21:03:07 by kpeanuts         ###   ########.fr       */
+/*   Updated: 2022/03/07 22:17:49 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,25 @@
 # define KEY_ESC 53
 # define KEY_RIGHT 124
 # define KEY_LEFT 123
+# define ESC 53
+
+# define HEIGHT 1080
+# define WIDTH 1920
+
+# define TEX_WIDTH 64
+# define TEX_HEIGHT 64
+
+# define ARROW_UP 126
+# define ARROW_DOWN 125
+# define ARROW_LEFT 123
+# define ARROW_RIGHT 124
+
+# define TURN 0.05
+# define ROTSPEED 0.055
 
 typedef struct s_lodev
 {
-	double	pos_x;
+    double	pos_x;
 	double	pos_y;
 	double	dir_x;
 	double	dir_y;
@@ -61,10 +76,22 @@ typedef struct s_lodev
 	double	tex_pos;
 }				t_lodev;
 
+typedef struct s_point
+{
+	int		x;
+	int		y;
+}	t_point;
+
 typedef struct s_vars 
 {
     void    *mlx;
     void    *win;
+    void	*img;
+	void	*addr;
+	int		line_l;
+	int		bpp;
+	int		en;
+	t_point	size_img;
 }               t_vars;
 
 typedef struct s_data 
@@ -95,6 +122,18 @@ typedef struct s_picture
     void *road;
 }       t_picture;
 
+typedef struct s_rgb
+{
+	int		f_r;
+	int		f_g;
+	int		f_b;
+	int		c_r;
+	int		c_g;
+	int		c_b;
+	int		f;
+	int		c;
+}t_rgb;
+
 typedef struct s_cub
 {
     char **map;
@@ -106,8 +145,12 @@ typedef struct s_cub
     char *map_ea; //check EA path
     char *map_f; //check F colors
     char *map_c; //check C colors
-    long color_f; //get color F after changes
-    long color_c; //get color C after changes
+    int **nor;
+    int **sou;
+    int **wes;
+    int **eas;
+    int color_f; //get color F after changes
+    int color_c; //get color C after changes
 
     int height;
     int width;
@@ -119,9 +162,12 @@ typedef struct s_cub
     int map_S; //flag for player`s position
     int map_E; //flag for player`s position
     int map_W; //flag for player`s position
-    t_xy_system drop;
+   
+    struct s_rgb    *rgb;
+    t_xy_system  drop;
     t_picture figure;
-    t_vars window;
+    t_vars *window;
+    t_vars img_map;
 
 	t_lodev lodev;
 }               t_cub;
@@ -169,6 +215,20 @@ char	**ft_split(char const *s, char c);
 long ft_color_parse_to_int(char *cub);
 void ft_utils_for_colors(t_cub *cub, int i, int j, int k);
 
-void	ft_init_player(t_cub *cub);
+void    exit_cube_card(int i);
+void    exit_cube_file(int i);
+void    init_player(t_cub *cub);
+void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
+int	print_texture(t_cub *cub, t_lodev *all, int i, int x);
+void	init_lodev(t_lodev *all);
+void	*pechat(t_cub *cub);
+void	key_w(t_cub **cub, char **map, double moveSpeed);
+void	key_s(t_cub **cub, char **map, double moveSpeed);
+void	key_d(t_cub **cub, char **map, double moveSpeed);
+void	key_rl(t_cub **cub, double olddir_x, double oldplane_x, int keycode);
+void	key_a(t_cub **cub, char **map, double moveSpeed);
+void	init_texture(t_cub *cub);
+void	print_all(t_cub *cub, int x, t_lodev *all);
+t_point	point_set(int x, int y);
 
 #endif
