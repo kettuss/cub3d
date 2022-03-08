@@ -149,8 +149,8 @@ typedef struct s_cub
     int **sou;
     int **wes;
     int **eas;
-    int color_f; //get color F after changes
-    int color_c; //get color C after changes
+    long color_f; //get color F after changes
+    long color_c; //get color C after changes
 
     int height;
     int width;
@@ -205,6 +205,9 @@ int check_strings_count_in_the_map(t_cub map);
 void check_wall_utils(t_cub map);
 int check_insaid_part_map(t_cub map, int i, int j);
 void check_colors_range(int *new_array);
+int player_position_n_s(t_cub *cub, t_cub map, int i, int j);
+int player_position_w_e(t_cub *cub, t_cub map, int i, int j);
+void copy_to_cub(t_cub *cub, t_cub map);
 
 int	ft_count(char const *s, char c);
 int	ft_lgthword(char const *s, char c, int k);
