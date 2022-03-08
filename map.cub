@@ -1,14 +1,13 @@
-EA /Users/kpeanuts/Desktop/cubik_nash/image/4.xpm
-WE /Users/kpeanuts/Desktop/cubik_nash/image/4.xpm
-NO /Users/kpeanuts/Desktop/cubik_nash/image/4.xpm
-SO /Users/kpeanuts/Desktop/cubik_nash/image/4.xpm
+EA image/tree.XPM
+WE image/tree.XPM
+NO image/tree.XPM
+SO image/tree.XPM
 
-C 209,183,152
+C 209,183,0
 
-F 115, 70, 70
+F 115,70,0
 
-11111
-10001
-10S01
-10001
-11111
+111
+1S1
+101
+111
