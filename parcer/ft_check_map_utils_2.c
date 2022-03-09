@@ -6,7 +6,7 @@
 /*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:29:24 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:57:31 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/07 19:10:19 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ t_cub	check_spaces_in_the_map(t_cub *cub, t_cub map, int max_size)
 		{
 			current_size = ft_strlen_main(cub->map[i]);
 			map.map[j] = cub->map[i];
+            if (map.map[j][current_size - 1] != '1')
+                exit_cube_card_util(1);
 			if (current_size < max_size)
 			{
 				while (current_size < max_size)

@@ -40,24 +40,27 @@ void	ft_utils_for_colors(t_cub *cub, int i, int j, int k)
 	}
 }
 
-void	ft_utils_for_no_and_so(t_cub *cub, int i, int j)
+char *ft_utils_for_no_and_so(t_cub *cub, int i, int j)
 {
 	if (cub->map[i][0] == 'N' && cub->map[i][1] == 'O')
 	{
 		j = j + 2;
 		while (cub->map[i][j] != '\n')
 			j++;
+        printf("j = %d\n", j);
 		cub->map_no = ft_substr(cub->map[i], 3, j);
 		cub->map_no = ft_check_space_tab(cub->map_no);
+        printf("cub->map_no = %s\n", cub->map_no);
 	}
-	else if (cub->map[i][0] == 'S' && cub->map[i][1] == 'O')
-	{
-		j = j + 2;
-		while (cub->map[i][j] != '\n')
-			j++;
-		cub->map_so = ft_substr(cub->map[i], 3, j);
-		cub->map_so = ft_check_space_tab(cub->map_so);
-	}
+//	else if (cub->map[i][0] == 'S' && cub->map[i][1] == 'O')
+//	{
+//		j = j + 2;
+//		while (cub->map[i][j] != '\n')
+//			j++;
+//		cub->map_so = ft_substr(cub->map[i], 3, j);
+//		cub->map_so = ft_check_space_tab(cub->map_so);
+//	}
+return (cub->map_no);
 }
 
 void	ft_utils_for_we_and_ea(t_cub *cub, int i, int j)

@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:54:53 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:39:14 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:24:05 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,13 @@ void	read_map_card(t_cub *cub)
 		i++;
 	}
 	map = check_player_position_util(cub, map);
-	copy_to_cub(cub, map);
+	for (int i = 0; cub->map[i] != NULL; i++)
+		printf("%s\n", cub->map[i]);
+//	i = 0;
+//	while (map.map[i] != NULL)
+//	{
+//		cub->map[i] = map.map[i];
+//		i++;
+//	}
+//	cub->map[i] = NULL;
 }

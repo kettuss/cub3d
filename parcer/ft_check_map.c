@@ -52,18 +52,21 @@ void	ft_check_path_images(t_cub *cub)
 		k = 0;
 		while (cub->map[i][j])
 		{
-			if ((cub->map[i][0] == 'N' && cub->map[i][1] == 'O')
-				|| (cub->map[i][0] == 'S' && cub->map[i][1] == 'O'))
-				ft_utils_for_no_and_so(cub, i, j);
-			else if ((cub->map[i][0] == 'W' && cub->map[i][1] == 'E')
-				|| (cub->map[i][0] == 'E' && cub->map[i][1] == 'A'))
-				ft_utils_for_we_and_ea(cub, i, j);
-			else if (cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
-				ft_utils_for_colors(cub, i, j, k);
+            printf("cub->map[i][0] = %c\n", cub->map[i][0]);
+			if (cub->map[i][0] == 'N' && cub->map[i][1] == 'O')
+                cub->map_no = ft_utils_for_no_and_so(cub, i, j);
+//				|| (cub->map[i][0] == 'S' && cub->map[i][1] == 'O'))
+//				ft_utils_for_no_and_so(cub, i, j);
+//			else if ((cub->map[i][0] == 'W' && cub->map[i][1] == 'E')
+//				|| (cub->map[i][0] == 'E' && cub->map[i][1] == 'A'))
+//				ft_utils_for_we_and_ea(cub, i, j);
+//			else if (cub->map[i][0] == 'F' || cub->map[i][0] == 'C')
+//				ft_utils_for_colors(cub, i, j, k);
 			break ;
 		}
 		i++;
 	}
+    printf("cub->map_no = %s\n", cub->map_no);
 }
 
 int	ft_check_file_extention(char **argv)
