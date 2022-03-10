@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:50:43 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:26:18 by kpeanuts         ###   ########.fr       */
+/*   Updated: 2022/03/10 15:38:13 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	ft_check_wall(t_cub *cub)
 		}
 		i++;
 	}
+    free(map.map);
 }
 
-void	ft_check_path_images(t_cub *cub) //TODO: !!!
+void	ft_check_path_images(t_cub *cub)
 {
 	int	i;
 	int	j;
 	int	k;
 
 	i = 0;
-    //printf("cub->map[i] = %s\n", cub->map[i]);
 	while (cub->map[i])
 	{
 		j = 0;
@@ -55,7 +55,7 @@ void	ft_check_path_images(t_cub *cub) //TODO: !!!
 		{
 			if ((cub->map[i][0] == 'N' && cub->map[i][1] == 'O')
 				|| (cub->map[i][0] == 'S' && cub->map[i][1] == 'O'))
-                ft_utils_for_no_and_so(cub, i, j);
+				ft_utils_for_no_and_so(cub, i, j);
 			else if ((cub->map[i][0] == 'W' && cub->map[i][1] == 'E')
 				|| (cub->map[i][0] == 'E' && cub->map[i][1] == 'A'))
 				ft_utils_for_we_and_ea(cub, i, j);
@@ -65,7 +65,6 @@ void	ft_check_path_images(t_cub *cub) //TODO: !!!
 		}
 		i++;
 	}
-    printf("cub->map_no = %s\n", cub->map_no);
 }
 
 int	ft_check_file_extention(char **argv)

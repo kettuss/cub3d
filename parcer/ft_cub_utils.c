@@ -6,7 +6,7 @@
 /*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:51:44 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/07 19:29:44 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:10:03 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ long	ft_color_parse_to_int(char *cub)
 		exit_cube_card(10);
 	check_colors_range(new_array);
 	color = (1 << 24 | new_array[0] << 16 | new_array[1] << 8 | new_array[2]);
-    //free(array);
-    //free(new_array);
+	free(array);
+	free(new_array);
 	return (color);
 }

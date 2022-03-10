@@ -99,11 +99,6 @@ void	copy_to_cub(t_cub *cub, t_cub map)
 		i++;
 	}
 	cub->map[i] = NULL;
-    //printf("map.map_no = %s\n", map.map_no);
 	cub->color_f = map.color_f;
 	cub->color_c = map.color_c;
-	//cub->map_no = map.map_no;
-	//cub->map_so = map.map_so;
-	//cub->map_ea = map.map_ea;
-	//cub->map_we = map.map_we;
 }

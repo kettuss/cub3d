@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:54:53 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:39:14 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:12:24 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	ft_str_number(t_cub *cub, char **argv)
 		free(line);
 	}
 	free(line);
+    free(cub->map);
+    close(fd); //TODO
 }
 
 void	read_map_file(char **argv, t_cub *cub)
@@ -72,7 +74,6 @@ void	read_map_file(char **argv, t_cub *cub)
 		exit_cube_file(6);
 	cub = read_map_file_util(k, fd, cub);
 	read_map_card(cub, argv);
-    //free(cub->map);
 }
 
 void	read_map_card(t_cub *cub, char **argv)
@@ -90,7 +91,7 @@ void	read_map_card(t_cub *cub, char **argv)
 		i++;
 	}
 	map = check_player_position_util(cub, map);
-    checker_map(cub, argv);
+	checker_map(cub, argv);
 	copy_to_cub(cub, map);
-    //free(map.map);
+	free(map.map);
 }

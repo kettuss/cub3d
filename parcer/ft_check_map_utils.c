@@ -6,7 +6,7 @@
 /*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:51:16 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/07 18:36:58 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 16:04:33 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,14 @@ void	ft_utils_for_no_and_so(t_cub *cub, int i, int j)
 			j++;
 		cub->map_no = ft_substr(cub->map[i], 3, j);
 		cub->map_no = ft_check_space_tab(cub->map_no);
-        printf("cub->map_no = %s\n", cub->map_no);
 	}
 	else if (cub->map[i][0] == 'S' && cub->map[i][1] == 'O')
 	{
 		j = j + 2;
 		while (cub->map[i][j] != '\n')
 			j++;
-        cub->map_so = ft_substr(cub->map[i], 3, j);
-        cub->map_so = ft_check_space_tab(cub->map_so);
+		cub->map_so = ft_substr(cub->map[i], 3, j);
+		cub->map_so = ft_check_space_tab(cub->map_so);
 	}
 }
 
@@ -95,10 +94,8 @@ char	*ft_check_space_tab(char *line)
 	while (line[i])
 	{
 		if (line[i] == ' ' || line[i] == '\t')
-        {
-            while (line[i] == ' ' || line[i] == '\t')
-                i++;
-        }
+			while (line[i] == ' ' || line[i] == '\t')
+				i++;
 		else if (line[0] == '\0')
 			cleaned_line[j] = line[0];
 		else
@@ -109,6 +106,7 @@ char	*ft_check_space_tab(char *line)
 		}
 	}
 	cleaned_line[j] = '\0';
+    free(line);
 	return (cleaned_line);
 }
 
