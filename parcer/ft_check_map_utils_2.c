@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_map_utils_2.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 18:29:24 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/10 16:07:17 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:55:56 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ t_cub	check_spaces_in_the_map(t_cub *cub, t_cub map, int max_size)
 					current_size++;
 				}
 			}
+			cub->map[i] = map.map[j];
 			j++;
 		}
 	}

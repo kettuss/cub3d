@@ -1,10 +1,10 @@
-EA image/1.XPM
-WE image/1.XPM
-NO image/1.XPM
-SO image/1.XPM
+NO image/brick1.xpm
+SO image/brick2.xpm
+WE image/brick3.xpm
+EA image/brick4.xpm
 
-F 220,100,30
-C 225,30,100
+F 220,100,225
+C 225,30,225
 
         1111111111111111111111111
         1000000000110000000000001

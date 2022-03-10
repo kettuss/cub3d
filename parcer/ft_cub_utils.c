@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_cub_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:51:44 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/10 16:10:03 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:11:12 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ int	ft_check_read_path(char *cub)
 
 	files = open(cub, O_RDONLY);
 	if (files > 0)
+	{
+		close(files);
 		return (1);
+	}
 	else
 	{
 		exit_cube_file(7);

@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 23:35:16 by kpeanuts          #+#    #+#             */
-/*   Updated: 2022/03/07 23:35:17 by kpeanuts         ###   ########.fr       */
+/*   Updated: 2022/03/10 21:29:51 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void static	get_color_texure(t_cub *cub, int ***color, char *way)
 
 	i = -1;
 	//way = "image/brick1.xpm";
-    way = cub->map_ea;
+    // way = cub->map_ea;
 	img.img = mlx_xpm_file_to_image(cub->window->mlx, way, &w, &h);
 	if (!img.img)
 		exit_cube_file(7);

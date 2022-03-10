@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit_cube.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:54:08 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:41:09 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/11 00:52:14 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,17 +88,60 @@ void	check_colors_range(int *new_array)
 	}
 }
 
+// iter == 1, then finding top, or
+// iter == -1, then finding bottom
+int		find_top_or_bottom_wall(t_cub *cub, int iter)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (iter == -1)
+	{
+		while (cub->map[i])
+		{
+			++i;
+		}
+		--i;
+	}
+	while (cub->map[i])
+	{
+		j = -1;
+		while (cub->map[i][++j])
+		{
+			if (cub->map[i][j] != '1' && cub->map[i][j] != ' ')
+			{
+				break ;
+			}
+			else if (cub->map[i][j + 1] == '\0')
+			{
+				return (i);
+			}
+		}
+		i += iter;
+	}
+	return (0);
+}
+
 void	copy_to_cub(t_cub *cub, t_cub map)
 {
 	int	i;
+	int	j;
+	int bottom_index;
 
-	i = 0;
-	while (map.map[i] != NULL)
+	(void)map; // pls delete this
+	int start_index = find_top_or_bottom_wall(cub, 1);
+	i = start_index;
+	bottom_index = find_top_or_bottom_wall(cub, -1);
+	j = -1;
+	while (cub->map[i] != NULL)
 	{
-		cub->map[i] = map.map[i];
-		i++;
+		cub->map[++j] = cub->map[i++];
+		if (i == bottom_index + 1)
+			break ;
 	}
-	cub->map[i] = NULL;
-	cub->color_f = map.color_f;
-	cub->color_c = map.color_c;
+	cub->map[++j] = NULL;
+	// cub->map[i] = NULL;
+	// cub->color_f = map.color_f;
+	// cub->color_c = map.color_c;
 }

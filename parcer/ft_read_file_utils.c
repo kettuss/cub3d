@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_read_file.c                                     :+:      :+:    :+:   */
+/*   ft_read_file_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:54:53 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/08 16:34:02 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 22:52:25 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_cub	*read_map_file_util(int k, int fd, t_cub *cub)
 	int		count;
 
 	i = 0;
+	count = 0;
 	while (k)
 	{
 		k = get_next_line(fd, &line);

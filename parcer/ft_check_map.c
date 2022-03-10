@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:50:43 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/10 15:38:13 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/10 23:07:41 by kpeanuts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,15 @@ int	ft_check_file_extention(char **argv)
 int	ft_check_before_map(char *cub)
 {
 	int	i;
-	int	count_strings_before;
 
 	i = 0;
-	count_strings_before = 0;
 	if (((cub[i] == 'N' || cub[i] == 'S') && cub[i + 1] == 'O')
 		|| (cub[i] == 'W' && cub[i + 1] == 'E')
 		|| (cub[i] == 'E' && cub[i + 1] == 'A')
 		|| (cub[i] == 'F' && cub[i + 1] == ' ')
 		|| (cub[i] == 'C' && cub[i + 1] == ' '))
-		count_strings_before++;
-	return (count_strings_before);
+		return (1);
+	return (0);
 }
 
 void	checker_map(t_cub *cub, char **argv)
