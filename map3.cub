@@ -1,7 +1,7 @@
-NO image/car.XPM
-SO image/door.XPM
-WE image/kiss.XPM
-EA image/tree.XPM
+NO image/brick1.xpm
+SO image/brick2.xpm
+WE image/brick3.xpm
+EA image/brick4.xpm
 
 F 220,100,0
 C 225,30,0
