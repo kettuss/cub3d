@@ -94,9 +94,11 @@ char	*ft_check_space_tab(char *line)
 		return (NULL);
 	while (line[i])
 	{
-		if ((line[i] == ' ' || line[i] == '\t')
-			&& (line[i + 1] == ' ' || line[i + 1] == '\t'))
-			i = i + 2;
+		if (line[i] == ' ' || line[i] == '\t')
+        {
+            while (line[i] == ' ' || line[i] == '\t')
+                i++;
+        }
 		else if (line[0] == '\0')
 			cleaned_line[j] = line[0];
 		else
