@@ -190,10 +190,17 @@ char	*ft_strdup_main(const char *str);
 size_t	ft_strlen_main(const char *str);
 
 int ft_check_read_path(char *cub);
+
+
+//char	*ft_utils_for_no_and_so(t_cub *cub, int i, int j);
 void ft_utils_for_no_and_so(t_cub *cub, int i, int j);
+
+
+
 void ft_utils_for_we_and_ea(t_cub *cub, int i, int j);
 int ft_check_before_map(char *cub);
-void read_map_card(t_cub *cub);
+//void read_map_card(t_cub *cub);
+void read_map_card(t_cub *cub, char **argv);
 int	ft_atoi(const char *s);
 char	*ft_check_space_tab(char *line);
 t_cub *read_map_file_util(int k, int fd, t_cub *cub);
@@ -218,8 +225,8 @@ char	**ft_split(char const *s, char c);
 long ft_color_parse_to_int(char *cub);
 void ft_utils_for_colors(t_cub *cub, int i, int j, int k);
 
-void    exit_cube_card(int i);
-void    exit_cube_file(int i);
+//void    exit_cube_card(int i);
+//void    exit_cube_file(int i);
 void    init_player(t_cub *cub);
 void	my_mlx_pixel_put(t_vars *data, int x, int y, int color);
 int	print_texture(t_cub *cub, t_lodev *all, int i, int x);
