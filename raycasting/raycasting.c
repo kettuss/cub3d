@@ -41,7 +41,8 @@ void static	get_color_texure(t_cub *cub, int ***color, char *way)
 	t_vars	img;
 
 	i = -1;
-	way = "/Users/kpeanuts/Desktop/cubik_nash/image/4.xpm";
+	//way = "image/brick1.xpm";
+    way = cub->map_ea;
 	img.img = mlx_xpm_file_to_image(cub->window->mlx, way, &w, &h);
 	if (!img.img)
 		exit_cube_file(7);
