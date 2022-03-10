@@ -6,7 +6,7 @@
 /*   By: kpeanuts <kpeanuts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:50:02 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/07 23:29:27 by kpeanuts         ###   ########.fr       */
+/*   Updated: 2022/03/08 15:43:44 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,16 @@ int	main(int argc, char **argv)
 	else if (argc > 2)
 		exit_cube_file(5);
 	read_map_file(argv, &cub);
-	checker_map(&cub, argv);
-	cub.map[3][3] = 'N';
-	//raycasting(&cub);
+	//checker_map(&cub, argv);
+    printf("cub.map_ea = %s\n", cub.map_ea);
+	if (cub.map_N == 1)
+		cub.map[cub.drop.y][cub.drop.x] = 'N';
+	else if (cub.map_S == 1)
+		cub.map[cub.drop.y][cub.drop.x] = 'S';
+	else if (cub.map_E == 1)
+		cub.map[cub.drop.y][cub.drop.x] = 'E';
+	else if (cub.map_W == 1)
+		cub.map[cub.drop.y][cub.drop.x] = 'W';
+	raycasting(&cub);
+    free(cub.map);
 }

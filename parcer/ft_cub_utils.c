@@ -106,5 +106,7 @@ long	ft_color_parse_to_int(char *cub)
 		exit_cube_card(10);
 	check_colors_range(new_array);
 	color = (1 << 24 | new_array[0] << 16 | new_array[1] << 8 | new_array[2]);
+    //free(array);
+    //free(new_array);
 	return (color);
 }

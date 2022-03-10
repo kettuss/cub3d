@@ -6,7 +6,7 @@
 /*   By: ikathrin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/06 18:54:08 by ikathrin          #+#    #+#             */
-/*   Updated: 2022/03/07 19:33:22 by ikathrin         ###   ########.fr       */
+/*   Updated: 2022/03/08 16:41:09 by ikathrin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,24 @@ void	check_colors_range(int *new_array)
 		}
 		i++;
 	}
+}
+
+void	copy_to_cub(t_cub *cub, t_cub map)
+{
+	int	i;
+
+	i = 0;
+	while (map.map[i] != NULL)
+	{
+		cub->map[i] = map.map[i];
+		i++;
+	}
+	cub->map[i] = NULL;
+    //printf("map.map_no = %s\n", map.map_no);
+	cub->color_f = map.color_f;
+	cub->color_c = map.color_c;
+	//cub->map_no = map.map_no;
+	//cub->map_so = map.map_so;
+	//cub->map_ea = map.map_ea;
+	//cub->map_we = map.map_we;
 }
